@@ -101,6 +101,49 @@ After the results table you will be asked:
 
 ---
 
+## Run without Python (Windows executable)
+
+You don't need to install Python to use this tool. A ready-to-run, compiled version is available in the **[Releases](https://github.com/aKaReZa75/STM32_TimerCalculator/releases)** section of this repository:
+
+1. Open the **Releases** page and download `STM32_Timer.exe` from the latest release.
+2. Run it by double-clicking, or from a terminal (`cmd` / PowerShell) so the output stays visible:
+
+```bash
+STM32_Timer.exe
+```
+
+> [!NOTE]
+> The executable is built with PyInstaller and is not code-signed, so Windows SmartScreen or some antivirus tools may show a warning the first time you run it. If you prefer, you can build the executable yourself from the source (see below) or just run the Python script.
+
+### Build the executable yourself (`build.bat`)
+
+The repository includes a `build.bat` script that compiles `STM32_Timer.py` into a single standalone `.exe` file.
+
+**Requirements:**
+
+```bash
+pip install pyinstaller numpy
+```
+
+**Steps:**
+
+1. Make sure `build.bat` and `STM32_Timer.py` are in the same folder.
+2. Double-click `build.bat`, or run it from a terminal:
+
+```bash
+build.bat
+```
+
+**What it does:**
+
+1. Compiles `STM32_Timer.py` into a single-file executable using PyInstaller.
+2. Moves `STM32_Timer.exe` next to the script.
+3. Removes all temporary files created during the build (`build/`, `dist/`, `STM32_Timer.spec`, `__pycache__/`), so only the `.exe` is left.
+
+If the build fails, the script prints an error message and still cleans up the temporary files.
+
+---
+
 ## Input format
 
 The target (and the timer clock) can be typed as a frequency or a time, with an optional SI prefix:
